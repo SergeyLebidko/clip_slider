@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import classNames from "classnames";
 import {PRESET1, PRESET2, PRESET3, PRESET4, PRESET5} from "../../constants/settings";
 import "./Slide.scss";
