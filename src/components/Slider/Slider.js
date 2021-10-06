@@ -3,7 +3,7 @@ import Slide from "../Slide/Slide";
 import {PATTERN_DATA, SLIDER_DATA} from "../../constants/settings";
 import "./Slider.scss";
 
-const BIG_INTERVAL = 3000;
+const BIG_INTERVAL = 6000;
 const SMALL_INTERVAL = 500;
 
 function Slider() {

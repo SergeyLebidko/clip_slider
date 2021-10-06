@@ -4,7 +4,7 @@ import {PRESET1, PRESET2, PRESET3, PRESET4, PRESET5} from "../../constants/setti
 import "./Slide.scss";
 
 function Slide({preset, mainHeader, smallHeader, text, buttonText, image, pattern}) {
-    const classList = classNames('slide', {
+    const textContentClasses = classNames('slide__text_content', {
         'preset_1': preset === PRESET1,
         'preset_2': preset === PRESET2,
         'preset_3': preset === PRESET3,
@@ -15,14 +15,17 @@ function Slide({preset, mainHeader, smallHeader, text, buttonText, image, patter
     const inlineStyle = pattern ? {clipPath: `polygon(${pattern.map(([x, y]) => x + "% " + y + "%").join(", ")})`} : {};
 
     return (
-        <div className={classList} style={inlineStyle}>
-            <h1>{mainHeader}</h1>
-            <h3>{smallHeader}</h3>
-            <div>
-                {text.map((line, index) => <p key={index}>{line}</p>)}
+        <div className="slide" style={inlineStyle}>
+            <img src={image} className="slide__photo"/>
+            <div className="slide__cap"/>
+            <div className={textContentClasses}>
+                <h1>{mainHeader}</h1>
+                <h3>{smallHeader}</h3>
+                <div>
+                    {text.map((line, index) => <p key={index}>{line}</p>)}
+                </div>
+                <button>{buttonText}</button>
             </div>
-            <button>{buttonText}</button>
-            <img src={image}/>
         </div>
     );
 }
