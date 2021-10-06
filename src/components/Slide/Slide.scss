@@ -1,23 +1,27 @@
 .slide {
-
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .preset_1 {
-
+  background-color: white;
 }
 
 .preset_2 {
-
+  background-color: DeepSkyBlue;
 }
 
 .preset_3 {
-
+  background-color: LightSlateGray;
 }
 
 .preset_4 {
-
+  background-color: black;
 }
 
 .preset_5 {
-
+  background-color: OrangeRed;
 }

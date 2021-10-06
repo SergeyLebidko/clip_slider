@@ -5,7 +5,7 @@ import "./Slider.scss";
 
 function Slider() {
     return (
-        <div>
+        <div className="slider">
             {SLIDER_DATA.map((data, index) => <Slide key={index} {...data} pattern={PATTERN_DATA[0]}/>)}
         </div>
     );
