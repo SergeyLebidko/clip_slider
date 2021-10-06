@@ -1,9 +1,9 @@
-import './App.css';
+import Slider from "./Slider/Slider";
 
 function App() {
   return (
     <div>
-      Content...
+      <Slider/>
     </div>
   );
 }
