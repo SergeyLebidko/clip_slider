@@ -4,7 +4,7 @@ import image3 from "../content/slide3.jpg";
 import image4 from "../content/slide4.jpg";
 import image5 from "../content/slide5.jpg";
 
-export const PATTERNS = [
+export const PATTERN_DATA = [
     [[0, 0], [100, 0], [100, 100], [0, 100]],
     [[0, 50], [50, 50], [50, 0], [100, 0], [100, 100], [0, 100]],
     [[0, 50], [100, 50], [100, 100], [0, 100]],
