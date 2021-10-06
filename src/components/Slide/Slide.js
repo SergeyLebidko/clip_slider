@@ -14,9 +14,6 @@ function Slide({preset, mainHeader, smallHeader, text, buttonText, image, patter
 
     const polygon = `polygon(${pattern.map(([x, y]) => x + "% " + y + "%").join(", ")})`;
 
-    // TODO Тестовый вывод. В дальнейшем удалить.
-    console.log(polygon);
-
     return (
         <div className={classList} style={{clipPath: polygon}}>
             <h1>{mainHeader}</h1>
