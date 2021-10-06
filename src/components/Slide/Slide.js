@@ -12,7 +12,7 @@ function Slide({preset, mainHeader, smallHeader, text, buttonText, image, patter
         'preset_5': preset === PRESET5
     });
 
-    const polygon = `polygon(${pattern.map(([x, y]) => x + " " + y).join(", ")})`;
+    const polygon = `polygon(${pattern.map(([x, y]) => x + "% " + y + "%").join(", ")})`;
 
     // TODO Тестовый вывод. В дальнейшем удалить.
     console.log(polygon);
