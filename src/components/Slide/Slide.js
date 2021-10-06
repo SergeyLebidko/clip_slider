@@ -4,7 +4,7 @@ import "./Slide.scss";
 function Slide(){
     return (
         <div>
-            Slide
+            Слайд
         </div>
     );
 }
