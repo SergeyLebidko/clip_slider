@@ -32,8 +32,8 @@ function Slider() {
 
     return (
         <div className="slider">
-            <Slide key="next" {...SLIDER_DATA[getNextSlideIndex(slide)]}/>
-            <Slide key="current" {...SLIDER_DATA[slide]} pattern={PATTERN_DATA[pattern]}/>
+            <Slide {...SLIDER_DATA[getNextSlideIndex(slide)]}/>
+            <Slide {...SLIDER_DATA[slide]} pattern={PATTERN_DATA[pattern]}/>
         </div>
     );
 }
