@@ -12,10 +12,10 @@ function Slide({preset, mainHeader, smallHeader, text, buttonText, image, patter
         'preset_5': preset === PRESET5
     });
 
-    const polygon = `polygon(${pattern.map(([x, y]) => x + "% " + y + "%").join(", ")})`;
+    const inlineStyle = pattern ? {clipPath: `polygon(${pattern.map(([x, y]) => x + "% " + y + "%").join(", ")})`} : {};
 
     return (
-        <div className={classList} style={{clipPath: polygon}}>
+        <div className={classList} style={inlineStyle}>
             <h1>{mainHeader}</h1>
             <h3>{smallHeader}</h3>
             <div>
