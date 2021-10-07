@@ -24,14 +24,29 @@
   }
 
   &__text_content {
-    position: absolute;
-    top: 30%;
-    bottom: 30%;
-    left: 0;
     padding: 2em 30vw 2em 20vw;
     color: white;
     border-top: 1px solid white;
     border-bottom: 1px solid white;
+    position: absolute;
+    top: 30%;
+    bottom: 30%;
+    left: 0;
+    right: 0;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+      width: 4px;
+      height: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+
+    &:hover::-webkit-scrollbar-thumb {
+      background-color: white;
+    }
 
     h1 {
       font-family: 'Roboto', sans-serif;
