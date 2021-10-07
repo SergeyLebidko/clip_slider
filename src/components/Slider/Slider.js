@@ -1,10 +1,11 @@
 import React, {useEffect, useRef, useState} from "react";
 import Slide from "../Slide/Slide";
-import {PATTERN_DATA, SLIDER_DATA} from "../../constants/settings";
+import {SLIDER_DATA} from "../../constants/settings";
+import PATTERN_DATA from '../../content/pattern.json';
 import "./Slider.scss";
 
-const BIG_INTERVAL = 6000;
-const SMALL_INTERVAL = 500;
+const BIG_INTERVAL = 3000;
+const SMALL_INTERVAL = 25;
 
 function Slider() {
     const [slide, setSlide] = useState(0);
