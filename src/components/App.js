@@ -1,11 +1,4 @@
 import Slider from "./Slider/Slider";
 
-function App() {
-  return (
-    <div>
-      <Slider/>
-    </div>
-  );
-}
-
+const App = () => <Slider/>;
 export default App;
