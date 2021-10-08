@@ -1,10 +1,11 @@
 import React from "react";
 import classNames from "classnames";
+import {AiFillLeftCircle, AiFillRightCircle} from 'react-icons/ai';
 import {PRESET1, PRESET2, PRESET3, PRESET4, PRESET5} from "../../constants/settings";
 import "./Slide.scss";
 
 function Slide({preset, mainHeader, smallHeader, text, buttonText, image}) {
-    const textContentClasses = classNames('slide__text_content', {
+    const textContentClasses = classNames('slide__content', {
         'preset_1': preset === PRESET1,
         'preset_2': preset === PRESET2,
         'preset_3': preset === PRESET3,
@@ -22,7 +23,10 @@ function Slide({preset, mainHeader, smallHeader, text, buttonText, image}) {
                 <div>
                     {text.map((line, index) => <p key={index}>{line}</p>)}
                 </div>
-                <button>{buttonText}</button>
+                <div className="slide__control">
+                    <AiFillLeftCircle color="white"/>
+                    <AiFillRightCircle color="white"/>
+                </div>
             </div>
         </div>
     );
