@@ -15,6 +15,7 @@ function Slider() {
     const timer = useRef(null);
 
     const getNextSlideIndex = slideIndex => slideIndex === (SLIDER_DATA.length - 1) ? 0 : slideIndex + 1;
+    const getPrevSlideIndex = slideIndex => slideIndex === 0 ? SLIDER_DATA.length - 1 : slideIndex - 1;
 
     function switchSlide(currentIndex, nextIndex, patternIndex) {
         if (patternIndex === (PATTERN_DATA.length - 1)) {
@@ -32,6 +33,20 @@ function Slider() {
         timer.current = setTimeout(() => switchSlide(current, next, pattern), BIG_INTERVAL);
         return () => clearTimeout(timer.current);
     }, []);
+
+    const toNext = () => {
+        if (pattern !== 0) return;
+        clearTimeout(timer.current);
+        setNext(getNextSlideIndex(current));
+        timer.current = setTimeout(() => switchSlide(current, getNextSlideIndex(current), pattern), 0);
+    }
+
+    const toPrev = () => {
+        if (pattern !== 0) return;
+        clearTimeout(timer.current);
+        setNext(getPrevSlideIndex(current));
+        timer.current = setTimeout(() => switchSlide(current, getNextSlideIndex(current), pattern), 0);
+    }
 
     const getSlideWrapperInline = index => {
         let wrapperInline = {display: 'none'};
@@ -53,7 +68,7 @@ function Slider() {
         <div className="slider">
             {SLIDER_DATA.map((data, index) =>
                 <div key={index} className="slider__slide_wrapper" style={getSlideWrapperInline(index)}>
-                    <Slide {...data}/>
+                    <Slide {...data} number={index + 1} toNext={toNext} toPrev={toPrev}/>
                 </div>
             )}
         </div>

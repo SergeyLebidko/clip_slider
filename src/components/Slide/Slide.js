@@ -4,7 +4,7 @@ import {AiFillLeftCircle, AiFillRightCircle} from 'react-icons/ai';
 import {PRESET1, PRESET2, PRESET3, PRESET4, PRESET5} from "../../constants/settings";
 import "./Slide.scss";
 
-function Slide({preset, mainHeader, smallHeader, text, buttonText, image}) {
+function Slide({number, preset, mainHeader, smallHeader, text, image, toNext, toPrev}) {
     const textContentClasses = classNames('slide__content', {
         'preset_1': preset === PRESET1,
         'preset_2': preset === PRESET2,
@@ -24,8 +24,9 @@ function Slide({preset, mainHeader, smallHeader, text, buttonText, image}) {
                     {text.map((line, index) => <p key={index}>{line}</p>)}
                 </div>
                 <div className="slide__control">
-                    <AiFillLeftCircle color="white"/>
-                    <AiFillRightCircle color="white"/>
+                    <AiFillLeftCircle color="white" onClick={toPrev}/>
+                    <span className="slide__number">{number}</span>
+                    <AiFillRightCircle color="white" onClick={toNext}/>
                 </div>
             </div>
         </div>
