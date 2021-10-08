@@ -45,7 +45,7 @@ function Slider() {
         if (pattern !== 0) return;
         clearTimeout(timer.current);
         setNext(getPrevSlideIndex(current));
-        timer.current = setTimeout(() => switchSlide(current, getNextSlideIndex(current), pattern), 0);
+        timer.current = setTimeout(() => switchSlide(current, getPrevSlideIndex(current), pattern), 0);
     }
 
     const getSlideWrapperInline = index => {
