@@ -33,30 +33,29 @@ function Slider() {
         return () => clearTimeout(timer.current);
     }, []);
 
+    const getSlideWrapperInline = index => {
+        let wrapperInline = {display: 'none'};
+        if (index === next) wrapperInline = {
+            ...wrapperInline,
+            display: 'block',
+            zIndex: 0
+        }
+        if (index === current) wrapperInline = {
+            ...wrapperInline,
+            display: 'block',
+            zIndex: 1000,
+            clipPath: `polygon(${PATTERN_DATA[pattern].map(([x, y]) => x + "% " + y + "%").join(", ")})`
+        }
+        return wrapperInline;
+    }
+
     return (
         <div className="slider">
-            {SLIDER_DATA.map((data, index) => {
-                let wrapperInline = {display: 'none'};
-
-                if (index === next) wrapperInline = {
-                    ...wrapperInline,
-                    display: 'block',
-                    zIndex: 0
-                }
-
-                if (index === current) wrapperInline = {
-                    ...wrapperInline,
-                    display: 'block',
-                    zIndex: 1000,
-                    clipPath: `polygon(${PATTERN_DATA[pattern].map(([x, y]) => x + "% " + y + "%").join(", ")})`
-                }
-
-                return (
-                    <div key={index} className="slider__slide_wrapper" style={wrapperInline}>
-                        <Slide {...data}/>
-                    </div>
-                );
-            })}
+            {SLIDER_DATA.map((data, index) =>
+                <div key={index} className="slider__slide_wrapper" style={getSlideWrapperInline(index)}>
+                    <Slide {...data}/>
+                </div>
+            )}
         </div>
     );
 }
