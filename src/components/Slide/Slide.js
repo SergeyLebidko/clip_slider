@@ -3,7 +3,7 @@ import classNames from "classnames";
 import {PRESET1, PRESET2, PRESET3, PRESET4, PRESET5} from "../../constants/settings";
 import "./Slide.scss";
 
-function Slide({preset, mainHeader, smallHeader, text, buttonText, image, pattern}) {
+function Slide({preset, mainHeader, smallHeader, text, buttonText, image}) {
     const textContentClasses = classNames('slide__text_content', {
         'preset_1': preset === PRESET1,
         'preset_2': preset === PRESET2,
@@ -12,10 +12,8 @@ function Slide({preset, mainHeader, smallHeader, text, buttonText, image, patter
         'preset_5': preset === PRESET5
     });
 
-    const inlineStyle = pattern ? {clipPath: `polygon(${pattern.map(([x, y]) => x + "% " + y + "%").join(", ")})`} : {};
-
     return (
-        <div className="slide" style={inlineStyle}>
+        <div className="slide">
             <img src={image} className="slide__photo"/>
             <div className="slide__cap"/>
             <div className={textContentClasses}>
