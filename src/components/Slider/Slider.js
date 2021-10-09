@@ -72,4 +72,3 @@ function Slider({data}) {
 }
 
 export default Slider;
-
