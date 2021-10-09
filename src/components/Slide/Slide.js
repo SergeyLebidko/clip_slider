@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import classNames from "classnames";
 import {AiFillLeftCircle, AiFillRightCircle} from 'react-icons/ai';
 import {PRESET1, PRESET2, PRESET3, PRESET4, PRESET5} from "../../constants/settings";
@@ -31,6 +32,17 @@ function Slide({number, preset, mainHeader, smallHeader, text, image, toNext, to
             </div>
         </div>
     );
+}
+
+Slide.propTypes = {
+    number: PropTypes.number,
+    preset: PropTypes.string,
+    mainHeader: PropTypes.string,
+    smallHeader: PropTypes.string,
+    text: PropTypes.array,
+    image: PropTypes.string,
+    toNext: PropTypes.func,
+    toPrev: PropTypes.func
 }
 
 export default Slide;

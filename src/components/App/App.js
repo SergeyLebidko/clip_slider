@@ -1,3 +1,4 @@
+import React from 'react';
 import Slider from "../Slider/Slider";
 import {SLIDER_DATA} from "../../constants/settings";
 import "./App.scss";

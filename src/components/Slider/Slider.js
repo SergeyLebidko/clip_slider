@@ -1,4 +1,5 @@
 import React, {useEffect, useRef, useState} from "react";
+import PropTypes from 'prop-types';
 import Slide from "../Slide/Slide";
 import PATTERN_DATA from '../../content/pattern.json';
 import "./Slider.scss";
@@ -69,6 +70,10 @@ function Slider({data}) {
             )}
         </div>
     );
+}
+
+Slider.propTypes = {
+    data: PropTypes.array
 }
 
 export default Slider;
