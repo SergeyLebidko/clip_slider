@@ -55,21 +55,16 @@ function Slider() {
     }
 
     const getSlideWrapperInline = index => {
-        // console.log(patternDirection, pattern)
-
-        let wrapperInline = {display: 'none'};
-        if (index === next) wrapperInline = {
-            ...wrapperInline,
+        if (index === next) return {
             display: 'block',
             zIndex: 0
         }
-        if (index === current) wrapperInline = {
-            ...wrapperInline,
+        if (index === current) return {
             display: 'block',
             zIndex: 1000,
             clipPath: `polygon(${patternDirection[pattern].map(([x, y]) => x + "% " + y + "%").join(", ")})`
         }
-        return wrapperInline;
+        return {display: 'none'};
     }
 
     return (
