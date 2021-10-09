@@ -20,19 +20,6 @@ function Slider({data}) {
     const getNextSlideIndex = index => index === (data.length - 1) ? 0 : index + 1;
     const getPrevSlideIndex = index => index === 0 ? data.length - 1 : index - 1;
 
-    // function switchSlide(currentIndex, nextIndex, lineIndex, currentPattern) {
-    //     if (lineIndex === (currentPattern.length - 1)) {
-    //         setCurrent(nextIndex);
-    //         setNext(getNextSlideIndex(nextIndex));
-    //         setLine(0);
-    //         setPattern(PATTERN_DATA[TO_RIGHT])
-    //         timer.current = setTimeout(() => switchSlide(nextIndex, getNextSlideIndex(nextIndex), 0, PATTERN_DATA[TO_RIGHT]), BIG_INTERVAL);
-    //     } else {
-    //         setLine(lineIndex + 1);
-    //         timer.current = setTimeout(() => switchSlide(currentIndex, nextIndex, lineIndex + 1, currentPattern), SMALL_INTERVAL);
-    //     }
-    // }
-
     useEffect(() => {
         if (line === 0) timer.current = setTimeout(() => setLine(1), BIG_INTERVAL);
         if (line > 0 && line < (pattern.length - 1)) timer.current = setTimeout(() => setLine(oldLine => oldLine + 1), SMALL_INTERVAL);
@@ -44,10 +31,7 @@ function Slider({data}) {
         }, SMALL_INTERVAL);
     }, [line]);
 
-    useEffect(() => {
-        // timer.current = setTimeout(() => switchSlide(current, next, line, pattern), BIG_INTERVAL);
-        return () => clearTimeout(timer.current);
-    }, []);
+    useEffect(() =>  () => clearTimeout(timer.current), []);
 
     const toNext = () => {
         if (line !== 0) return;
