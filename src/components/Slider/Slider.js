@@ -10,29 +10,26 @@ const TO_LEFT = 'to_left';
 const TO_RIGHT = 'to_right';
 
 function Slider({data}) {
-    const [current, setCurrent] = useState(0);
-    const [next, setNext] = useState(1);
-    const [line, setLine] = useState(0);
-    const [pattern, setPattern] = useState(PATTERN_DATA[TO_RIGHT]);
+    const [current, setCurrent] = useState(0);              // Индекс текущего слайда
+    const [next, setNext] = useState(1);                    // Индекс следующего слайда
+    const [line, setLine] = useState(0);                    // Индекс набора координат в текущем паттерне
+    const [pattern, setPattern] = useState(PATTERN_DATA[TO_RIGHT]);  // Текущий паттерн
 
     const timer = useRef(null);
 
-    const getNextSlideIndex = slideIndex => slideIndex === (data.length - 1) ? 0 : slideIndex + 1;
-    const getPrevSlideIndex = slideIndex => slideIndex === 0 ? data.length - 1 : slideIndex - 1;
+    const getNextSlideIndex = index => index === (data.length - 1) ? 0 : index + 1;
+    const getPrevSlideIndex = index => index === 0 ? data.length - 1 : index - 1;
 
-    const setLeftPattern = () => setPattern(PATTERN_DATA[TO_LEFT]);
-    const setRightPattern = () => setPattern(PATTERN_DATA[TO_RIGHT]);
-
-    function switchSlide(currentIndex, nextIndex, lineIndex, pattern) {
-        if (lineIndex === (pattern.length - 1)) {
+    function switchSlide(currentIndex, nextIndex, lineIndex, currentPattern) {
+        if (lineIndex === (currentPattern.length - 1)) {
             setCurrent(nextIndex);
             setNext(getNextSlideIndex(nextIndex));
             setLine(0);
-            setRightPattern();
+            setPattern(PATTERN_DATA[TO_RIGHT])
             timer.current = setTimeout(() => switchSlide(nextIndex, getNextSlideIndex(nextIndex), 0, PATTERN_DATA[TO_RIGHT]), BIG_INTERVAL);
         } else {
             setLine(lineIndex + 1);
-            timer.current = setTimeout(() => switchSlide(currentIndex, nextIndex, lineIndex + 1, pattern), SMALL_INTERVAL);
+            timer.current = setTimeout(() => switchSlide(currentIndex, nextIndex, lineIndex + 1, currentPattern), SMALL_INTERVAL);
         }
     }
 
@@ -44,7 +41,6 @@ function Slider({data}) {
     const toNext = () => {
         if (line !== 0) return;
         clearTimeout(timer.current);
-        setNext(getNextSlideIndex(current));
         timer.current = setTimeout(() => switchSlide(current, getNextSlideIndex(current), 0, pattern), 0);
     }
 
@@ -52,7 +48,7 @@ function Slider({data}) {
         if (line !== 0) return;
         clearTimeout(timer.current);
         setNext(getPrevSlideIndex(current));
-        setLeftPattern();
+        setPattern(PATTERN_DATA[TO_LEFT]);
         timer.current = setTimeout(() => switchSlide(current, getPrevSlideIndex(current), 0, PATTERN_DATA[TO_LEFT]), 0);
     }
 
